@@ -12,49 +12,98 @@ in their C program testing. Currently, CREST-IVE extends CREST to the following 
 
 Build CREST-IVE
 =====
-CREST-IVE can work with Ubuntu 14.04 and Ubuntu 16.04, currently.
+CREST-IVE can work with Ubuntu 14.04,Ubuntu 16.04 and Mac OS, currently.
 Please find the following instruction to download a constraint solver Z3, to build CIL,
 and to build CREST-IVE in sequence.
 
+Build CREST-IVE with Ubuntu 14.04 and Ubuntu 16.04
+=====
+
 1. Clone this repository to your local
 ```	
-$ git clone http://github.com/arise-handong/crest 
+$ git clone http://github.com/arise-handong/crestive 
 ```
 
 2. Download [Z3](https://github.com/Z3Prover/z3) version 4.8.4 (or a more recent version) to the 'lib' directory. For example of Ubuntu 16.04:
 ``` 
-$ cd crest/lib
-crest/lib$ wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip  
-crest/lib$ unzip z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip
-crest/lib$ ln -s z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04 z3
+$ cd crestive/lib
+crestive/lib$ wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip  
+crestive/lib$ unzip z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip
+crestive/lib$ ln -s z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04 z3
 ```
 
 3. Update LD_LIBRARY_PATH of `libz3.so`
 ```
-$ cd crest/lib/z3/bin
-crest/lib/z3/bin$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
+$ cd crestive/lib/z3/bin
+crestive/lib/z3/bin$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
 ```
 
 4. Build ```cil```, a variant of [CIL](https://cil-project.github.io/cil/) for CREST
 
 ``` 
-$ cd crest/cil
-crest/cil$ ./configure
-crest/cil$ make 
+$ cd crestive/cil
+crestive/cil$ ./configure
+crestive/cil$ make 
 ```
 
-5. Build CREST and update PATH
+5. Build CREST-IVE and update PATH
 
 ``` 
-$ cd crest/src
-crest/src$ make
-crest/src$ cd ../bin
-crest/bin$ PATH=$PATH:$(pwd) 
+$ cd crestive/src
+crestive/src$ make
+crestive/src$ cd ../bin
+crestive/bin$ PATH=$PATH:$(pwd) 
 ```
 
-Run CREST
+Build CREST-IVE with Mac OS
 =====
+0. Constraint
+```
+CREST-IVE can only be built with 
 
+- any version of GCC(Not clang) on Mac OS
+- Ocaml version >= 4.02.3 and Ocaml version < 4.06 (for running with cil)
+ 
+```
+
+1. Clone this repository to your local
+```	
+$ git clone http://github.com/arise-handong/crestive
+```
+
+2. Download [Z3](https://github.com/Z3Prover/z3) version 4.8.4 (or a more recent version) to the 'lib' directory. For example of Mac OS:
+``` 
+$ cd crest/lib
+crestive/lib$ wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-osx-10.14.1.zip  
+crestive/lib$ unzip z3-4.8.4.d6df51951f4c-x64-osx-10.14.1.zip
+crestive/lib$ ln -s z3-4.8.4.d6df51951f4c-x64-osx-10.14.1 z3
+```
+
+3. Update LD_LIBRARY_PATH of `libz3.dylib`
+```
+$ cd crestive/lib/z3/bin
+crestive/lib/z3/bin$ install_name_tool -change libz3.dylib /crestive/lib/z3/bin/libz3.dylib process_cfg
+crestive/lib/z3/bin$ install_name_tool -change libz3.dylib /crestive/lib/z3/bin/libz3.dylib run_crest
+```
+
+4. Build ```cil```, a variant of [CIL](https://cil-project.github.io/cil/) for CREST
+
+``` 
+$ cd crestive/cil
+crestive/cil$ ./configure
+crestive/cil$ make 
+```
+
+5. Build CREST-IVE and update PATH
+
+``` 
+$ cd crestive/src
+crestive/src$ make
+crestive/src$ cd ../bin
+crestive/bin$ PATH=$PATH:$(pwd) 
+```
+Run CRESTIVE
+=====
 A target program must declare one or more variables as symbolic variables.
 CREST-IVE extracts a symbolic path condition over these symbolic varialbes 
 along a concret execution, and then generates a test input as a concrete value 
@@ -121,3 +170,4 @@ parsing, analyzing, and transforming C programs.  CIL is written by
 George Necula, Scott McPeak, Wes Weimer, Ben Liblit, and Matt Harren.
 It is also distributed under the revised BSD license.  See cil/LICENSE
 for details.
+
