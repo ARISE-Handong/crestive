@@ -15,37 +15,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <utility>
-#include <yices_c.h>
-
-#include "base/yices_solver.h"
+#include <z3++.h>
+#include <chrono>
+#include "base/z3_solver.h"
 
 using std::make_pair;
 using std::numeric_limits;
 using std::queue;
 using std::set;
 
+using namespace z3;
+
 namespace crest {
 
 typedef vector<const SymbolicPred*>::const_iterator PredIt;
 
-
-yices_expr makeYicesNum(yices_context ctx, value_t val) {
-  if ((val >= numeric_limits<int>::min()) && (val <= numeric_limits<int>::max())) {
-    return yices_mk_num(ctx, static_cast<int>(val));
-  } else {
-    // Send the constant term to Yices as a string, to correctly handle constant terms outside
-    // the range of integers.
-    //
-    // NOTE: This is not correct for unsigned long long values that are larger than the max
-    // long long int value.
-    char buff[32];
-    snprintf(buff, 32, "%lld", val);
-    return yices_mk_num_from_string(ctx, buff);
-  }
-}
-
-
-bool YicesSolver::IncrementalSolve(const vector<value_t>& old_soln,
+bool Z3Solver::IncrementalSolve(const vector<value_t>& old_soln,
 				   const map<var_t,type_t>& vars,
 				   const vector<const SymbolicPred*>& constraints,
 				   map<var_t,value_t>* soln) {
@@ -112,93 +97,67 @@ bool YicesSolver::IncrementalSolve(const vector<value_t>& old_soln,
 }
 
 
-bool YicesSolver::Solve(const map<var_t,type_t>& vars,
+bool Z3Solver::Solve(const map<var_t,type_t>& vars,
 			const vector<const SymbolicPred*>& constraints,
 			map<var_t,value_t>* soln) {
 
-  typedef map<var_t,type_t>::const_iterator VarIt;
+  typedef map<var_t, type_t>::const_iterator VarIt;
 
-  // yices_enable_log_file("yices_log");
-  yices_context ctx = yices_mk_context();
-  assert(ctx);
+  context ctx;
+  solver s = tactic(ctx, "smt").mk_solver();
 
-  // Type limits.
-  vector<yices_expr> min_expr(types::LONG_LONG+1);
-  vector<yices_expr> max_expr(types::LONG_LONG+1);
-  for (int i = types::U_CHAR; i <= types::LONG_LONG; i++) {
-    min_expr[i] = yices_mk_num_from_string(ctx, const_cast<char*>(kMinValueStr[i]));
-    max_expr[i] = yices_mk_num_from_string(ctx, const_cast<char*>(kMaxValueStr[i]));
-    assert(min_expr[i]);
-    assert(max_expr[i]);
-  }
-
-  char int_ty_name[] = "int";
-  // fprintf(stderr, "yices_mk_mk_type(ctx, int_ty_name)\n");
-  yices_type int_ty = yices_mk_type(ctx, int_ty_name);
-  assert(int_ty);
-
-  // Variable declarations.
-  map<var_t,yices_var_decl> x_decl;
-  map<var_t,yices_expr> x_expr;
+  map<var_t, Z3_ast> x_expr;
   for (VarIt i = vars.begin(); i != vars.end(); ++i) {
     char buff[32];
     snprintf(buff, sizeof(buff), "x%d", i->first);
-    // fprintf(stderr, "yices_mk_var_decl(ctx, buff, int_ty)\n");
-    x_decl[i->first] = yices_mk_var_decl(ctx, buff, int_ty);
-    // fprintf(stderr, "yices_mk_var_from_decl(ctx, x_decl[i->first])\n");
-    x_expr[i->first] = yices_mk_var_from_decl(ctx, x_decl[i->first]);
-    assert(x_decl[i->first]);
-    assert(x_expr[i->first]);
-    // fprintf(stderr, "yices_assert(ctx, yices_mk_ge(ctx, x_expr[i->first], min_expr[i->second]))\n");
-    yices_assert(ctx, yices_mk_ge(ctx, x_expr[i->first], min_expr[i->second]));
-    // fprintf(stderr, "yices_assert(ctx, yices_mk_le(ctx, x_expr[i->first], max_expr[i->second]))\n");
-    yices_assert(ctx, yices_mk_le(ctx, x_expr[i->first], max_expr[i->second]));
+    x_expr[i->first] = ctx.int_const(buff);
+    expr e(ctx, x_expr[i->first]);
+    //assert(e);
+    s.add(e >= kMinValue[i->second]);
+    s.add(e <= kMaxValue[i->second]);
   }
-
-  // fprintf(stderr, "yices_mk_num(ctx, 0)\n");
-  yices_expr zero = yices_mk_num(ctx, 0);
-  assert(zero);
-
   { // Constraints.
-    vector<yices_expr> terms;
     for (PredIt i = constraints.begin(); i != constraints.end(); ++i) {
       const SymbolicExpr& se = (*i)->expr();
-      terms.clear();
-      terms.push_back(makeYicesNum(ctx, se.const_term()));
+      expr_vector terms(ctx);
+      expr const_term = ctx.int_val(static_cast<int64_t>(se.const_term()));
+      terms.push_back(const_term);
       for (SymbolicExpr::TermIt j = se.terms().begin(); j != se.terms().end(); ++j) {
-	yices_expr prod[2] = { x_expr[j->first], makeYicesNum(ctx, j->second) };
-	terms.push_back(yices_mk_mul(ctx, prod, 2));
+        expr ex_first(ctx, x_expr[j->first]);
+        expr ex_second = ctx.int_val(static_cast<int64_t>(j->second));
+        expr term = ex_first * ex_second;
+        terms.push_back(term);
       }
-      yices_expr e = yices_mk_sum(ctx, &terms.front(), terms.size());
-
-      yices_expr pred;
+      // yices_expr e = yices_mk_sum(ctx, &terms.front(), terms.size());
+      expr terms_expr = sum(terms);
+      // expr pred(ctx);
       switch((*i)->op()) {
-      case ops::EQ:  pred = yices_mk_eq(ctx, e, zero); break;
-      case ops::NEQ: pred = yices_mk_diseq(ctx, e, zero); break;
-      case ops::GT:  pred = yices_mk_gt(ctx, e, zero); break;
-      case ops::LE:  pred = yices_mk_le(ctx, e, zero); break;
-      case ops::LT:  pred = yices_mk_lt(ctx, e, zero); break;
-      case ops::GE:  pred = yices_mk_ge(ctx, e, zero); break;
+      case ops::EQ:  s.add(terms_expr == 0); break;
+      case ops::NEQ: s.add(terms_expr != 0); break;
+      case ops::GT:  s.add(terms_expr > 0); break;
+      case ops::LE:  s.add(terms_expr <= 0); break;
+      case ops::LT:  s.add(terms_expr < 0); break;
+      case ops::GE:  s.add(terms_expr >= 0); break;
       default:
 	fprintf(stderr, "Unknown comparison operator: %d\n", (*i)->op());
 	exit(1);
       }
-      yices_assert(ctx, pred);
     }
   }
 
-  bool success = (yices_check(ctx) == l_true);
+  bool success = (s.check() == sat);
+
   if (success) {
     soln->clear();
-    yices_model model = yices_get_model(ctx);
+    model m = s.get_model();
+    // std::cout << "s : " << s << std::endl;
     for (VarIt i = vars.begin(); i != vars.end(); ++i) {
+      expr x = m.eval(expr(ctx, x_expr[i->first]));
       long val;
-      assert(yices_get_int_value(model, x_decl[i->first], &val));
+      Z3_get_numeral_int64(ctx, x, &val);
       soln->insert(make_pair(i->first, val));
     }
   }
-
-  yices_del_context(ctx);
   return success;
 }
 

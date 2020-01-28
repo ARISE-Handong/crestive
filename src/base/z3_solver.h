@@ -40,3 +40,4 @@ class Z3Solver {
 
 
 #endif  // BASE_Z3_SOLVER_H__
+
