@@ -1,16 +1,26 @@
-
-YICES_DIR=/home/jburnim/yices-1.0.11
+Z3_DIR=../lib/z3
+Z3_LIB=$(Z3_DIR)/bin
+Z3_INCLUDE=$(Z3_DIR)/include
+OS := $(shell uname)
 
 CC=$(CXX)
-CFLAGS = -I. -I$(YICES_DIR)/include -Wall -O2
+
+#If your Operating System is Mac(Darwin)
+ifeq ($(OS),Darwin)
+CFLAGS = -I. -I$(Z3_INCLUDE) -fpermissive -Wall -O2 -std=c++11 -Wno-narrowing
+#If Operating System is Linux
+else
+CFLAGS = -I. -I$(Z3_INCLUDE) -Wall -O2 -std=c++11 -Wno-narrowing
+endif
+
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = -L$(YICES_DIR)/lib
-LOADLIBES = -lyices
+LDFLAGS = -L$(Z3_LIB)
+LOADLIBES = -lz3
 
 BASE_LIBS = base/basic_types.o base/symbolic_execution.o \
             base/symbolic_interpreter.o base/symbolic_path.o \
             base/symbolic_predicate.o base/symbolic_expression.o \
-            base/yices_solver.o
+            base/z3_solver.o
 
 
 all: libcrest/libcrest.a run_crest/run_crest \

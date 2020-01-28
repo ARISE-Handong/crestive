@@ -7,9 +7,10 @@
 // WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See LICENSE
 // for details.
+// Edited by Hansol Choe
 
-#ifndef BASE_YICES_SOLVER_H__
-#define BASE_YICES_SOLVER_H__
+#ifndef BASE_Z3_SOLVER_H__
+#define BASE_Z3_SOLVER_H__
 
 #include <map>
 #include <vector>
@@ -22,7 +23,7 @@ using std::vector;
 
 namespace crest {
 
-class YicesSolver {
+class Z3Solver {
  public:
   static bool IncrementalSolve(const vector<value_t>& old_soln,
 			       const map<var_t,type_t>& vars,
@@ -33,11 +34,10 @@ class YicesSolver {
                     const vector<const SymbolicPred*>& constraints,
 		    map<var_t,value_t>* soln);
 
-  static bool ReadSolutionFromFileOrDie(const string& file,
-                                        map<var_t,value_t>* soln);
 };
 
 }  // namespace crest
 
 
-#endif  // BASE_YICES_SOLVER_H__
+#endif  // BASE_Z3_SOLVER_H__
+
