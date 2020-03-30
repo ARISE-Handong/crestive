@@ -1,0 +1,7 @@
+(declare-fun x0 () Int)
+(declare-fun x2 () Int)
+(assert (<= x0 (- 128)))
+(assert (<= x0 127))
+(assert (>= x2 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (= (+ (- 3) (* x0 1) (* x2 1)) 0))
