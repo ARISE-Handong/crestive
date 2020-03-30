@@ -1,0 +1,254 @@
+2020
+complete cnct_server
+complete cnct_client
+svr = 3, clt = 4
+files.byte = 454
+no hi..
+nRcv : 454
+no break..
+file_info.st_size : 454
+files.byte 454
+send done...
+after SymbolicPath
+before solve at
+before solve at
+before solve at
+before solve at
+s : (declare-fun x0 () Int)
+(declare-fun x1 () Int)
+(assert (>= x0 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (>= x1 (- 2147483648)))
+(assert (<= x1 2147483647))
+(assert (>= (+ 0 (* x0 1)) 0))
+(assert (<= (+ (- 8) (* x1 1)) 0))
+(assert (<= (+ 0 (* x0 3) (* x1 1)) 0))
+(assert (< (+ (- 10) (* x0 1) (* x1 1)) 0))
+(assert (>= (+ 1 (* x0 1)) 0))
+(assert (<= (+ (- 7) (* x1 1)) 0))
+(assert (<= (+ 1 (* x0 3) (* x1 1)) 0))
+(rmodel->model-converter-wrapper
+x1 -> (- 1)
+x0 -> 0
+)
+
+==============
+after solve
+files.byte = 500
+no hi..
+nRcv : 500
+no break..
+file_info.st_size : 500
+files.byte 500
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+third branch_idx = 2
+before solve at
+before solve at
+before solve at
+before solve at
+s : (declare-fun x0 () Int)
+(declare-fun x1 () Int)
+(assert (>= x0 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (>= x1 (- 2147483648)))
+(assert (<= x1 2147483647))
+(assert (>= (+ 0 (* x0 1)) 0))
+(assert (<= (+ (- 8) (* x1 1)) 0))
+(assert (> (+ 0 (* x0 3) (* x1 1)) 0))
+(rmodel->model-converter-wrapper
+x1 -> 0
+x0 -> 1
+)
+
+==============
+after solve
+files.byte = 408
+no hi..
+nRcv : 408
+no break..
+file_info.st_size : 408
+files.byte 408
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+first 3801584
+before solve at
+s : (declare-fun x1 () Int)
+(assert (>= x1 (- 2147483648)))
+(assert (<= x1 2147483647))
+(assert (> (+ (- 8) (* x1 1)) 0))
+(rmodel->model-converter-wrapper
+x1 -> 9
+)
+
+==============
+after solve
+files.byte = 270
+no hi..
+nRcv : 270
+no break..
+file_info.st_size : 270
+files.byte 270
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+first 2128973900
+before solve at
+s : (declare-fun x0 () Int)
+(assert (>= x0 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (< (+ 0 (* x0 1)) 0))
+(rmodel->model-converter-wrapper
+x0 -> (- 1)
+)
+
+==============
+after solve
+files.byte = 420
+no hi..
+nRcv : 420
+no break..
+file_info.st_size : 420
+files.byte 420
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+third branch_idx = 2
+after checkprediction
+after SymbolicPath
+before solve at
+before solve at
+s : (declare-fun x0 () Int)
+(declare-fun x1 () Int)
+(assert (>= x0 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (>= x1 (- 2147483648)))
+(assert (<= x1 2147483647))
+(assert (< (+ 0 (* x0 1)) 0))
+(assert (>= (+ 1 (* x0 1)) 0))
+(assert (<= (+ (- 7) (* x1 1)) 0))
+(assert (<= (+ 1 (* x0 3) (* x1 1)) 0))
+(assert (< (+ (- 9) (* x0 1) (* x1 1)) 0))
+(assert (>= (+ 2 (* x0 1)) 0))
+(assert (<= (+ (- 6) (* x1 1)) 0))
+(assert (> (+ 2 (* x0 3) (* x1 1)) 0))
+(rmodel->model-converter-wrapper
+x1 -> 2
+x0 -> (- 1)
+)
+
+==============
+after solve
+files.byte = 374
+no hi..
+nRcv : 374
+no break..
+file_info.st_size : 374
+files.byte 374
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+first 2126958668
+before solve at
+before solve at
+before solve at
+before solve at
+s : (declare-fun x0 () Int)
+(declare-fun x1 () Int)
+(assert (>= x0 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (>= x1 (- 2147483648)))
+(assert (<= x1 2147483647))
+(assert (< (+ 0 (* x0 1)) 0))
+(assert (>= (+ 1 (* x0 1)) 0))
+(assert (<= (+ (- 7) (* x1 1)) 0))
+(assert (> (+ 1 (* x0 3) (* x1 1)) 0))
+(rmodel->model-converter-wrapper
+x1 -> 3
+x0 -> (- 1)
+)
+
+==============
+after solve
+files.byte = 328
+no hi..
+nRcv : 328
+no break..
+file_info.st_size : 328
+files.byte 328
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+first 17
+before solve at
+s : (declare-fun x1 () Int)
+(assert (>= x1 (- 2147483648)))
+(assert (<= x1 2147483647))
+(assert (> (+ (- 7) (* x1 1)) 0))
+(rmodel->model-converter-wrapper
+x1 -> 8
+)
+
+==============
+after solve
+files.byte = 236
+no hi..
+nRcv : 236
+no break..
+file_info.st_size : 236
+files.byte 236
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+first 29475312
+before solve at
+s : (declare-fun x0 () Int)
+(assert (>= x0 (- 2147483648)))
+(assert (<= x0 2147483647))
+(assert (< (+ 0 (* x0 1)) 0))
+(assert (< (+ 1 (* x0 1)) 0))
+(rmodel->model-converter-wrapper
+x0 -> (- 2)
+)
+
+==============
+after solve
+files.byte = 294
+no hi..
+nRcv : 294
+no break..
+file_info.st_size : 294
+files.byte 294
+send done...
+after run
+after updatecover
+after branch_idx
+prev_ex 
+cur_ex 
+first 2126958668
+after for loop
+after pureDfs final
+after for loop

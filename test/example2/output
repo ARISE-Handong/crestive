@@ -1,0 +1,306 @@
+Iteration 0 (0s): covered 0 branches [0 reach funs, 0 reach branches].
+RESET
+branch size: 18
+Iteration 1 (1s): covered 6 branches [1 reach funs, 10 reach branches].
+Solved 9/11
+branch size: 16
+Iteration 2 (1s): covered 7 branches [1 reach funs, 10 reach branches].
+Solved 0/9
+branch size: 13
+Iteration 3 (1s): covered 8 branches [1 reach funs, 10 reach branches].
+Solved 6/6
+branch size: 15
+Iteration 4 (1s): covered 8 branches [1 reach funs, 10 reach branches].
+Solved 2/8
+branch size: 13
+Iteration 5 (1s): covered 8 branches [1 reach funs, 10 reach branches].
+Solved 3/5
+branch size: 10
+Iteration 6 (2s): covered 8 branches [1 reach funs, 10 reach branches].
+Solved 1/3
+branch size: 9
+Iteration 7 (2s): covered 8 branches [1 reach funs, 10 reach branches].
+Solved 0/2
+branch size: 12
+Iteration 8 (2s): covered 8 branches [1 reach funs, 10 reach branches].
+Solved 2/5
+branch size: 11
+Iteration 9 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/4
+branch size: 12
+Iteration 10 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/5
+branch size: 10
+Iteration 11 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/3
+branch size: 11
+Iteration 12 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/4
+branch size: 13
+Iteration 13 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/6
+branch size: 11
+Iteration 14 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/4
+branch size: 13
+Iteration 15 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/6
+branch size: 16
+Iteration 16 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/9
+branch size: 13
+Iteration 17 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/6
+branch size: 12
+Iteration 18 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/5
+branch size: 10
+Iteration 19 (2s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/3
+branch size: 9
+Iteration 20 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/2
+branch size: 11
+Iteration 21 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/4
+branch size: 14
+Iteration 22 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/7
+branch size: 15
+Iteration 23 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/8
+branch size: 12
+Iteration 24 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/5
+branch size: 10
+Iteration 25 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/3
+branch size: 12
+Iteration 26 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/5
+branch size: 11
+Iteration 27 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/4
+branch size: 14
+Iteration 28 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/7
+branch size: 13
+Iteration 29 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/6
+branch size: 12
+Iteration 30 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/5
+branch size: 11
+Iteration 31 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/4
+branch size: 12
+Iteration 32 (3s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/5
+branch size: 14
+Iteration 33 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/7
+branch size: 13
+Iteration 34 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/6
+branch size: 10
+Iteration 35 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/3
+branch size: 9
+Iteration 36 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/2
+branch size: 12
+Iteration 37 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/5
+branch size: 13
+Iteration 38 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/6
+branch size: 14
+Iteration 39 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/7
+branch size: 16
+Iteration 40 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/9
+branch size: 14
+Iteration 41 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/7
+branch size: 13
+Iteration 42 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/6
+branch size: 12
+Iteration 43 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/5
+branch size: 13
+Iteration 44 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/6
+branch size: 11
+Iteration 45 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/4
+branch size: 10
+Iteration 46 (4s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/3
+branch size: 11
+Iteration 47 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/4
+branch size: 10
+Iteration 48 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/3
+branch size: 12
+Iteration 49 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/5
+branch size: 13
+Iteration 50 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/6
+branch size: 10
+Iteration 51 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/3
+branch size: 11
+Iteration 52 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/4
+branch size: 13
+Iteration 53 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/6
+branch size: 16
+Iteration 54 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/9
+branch size: 13
+Iteration 55 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/6
+branch size: 15
+Iteration 56 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/8
+branch size: 13
+Iteration 57 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/6
+branch size: 11
+Iteration 58 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/4
+branch size: 10
+Iteration 59 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/3
+branch size: 11
+Iteration 60 (5s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/4
+branch size: 13
+Iteration 61 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/6
+branch size: 12
+Iteration 62 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/5
+branch size: 13
+Iteration 63 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/5
+branch size: 15
+Iteration 64 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/8
+branch size: 14
+Iteration 65 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/7
+branch size: 15
+Iteration 66 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 8/8
+branch size: 18
+Iteration 67 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/11
+branch size: 17
+Iteration 68 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/10
+branch size: 15
+Iteration 69 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/8
+branch size: 14
+Iteration 70 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/7
+branch size: 13
+Iteration 71 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/6
+branch size: 14
+Iteration 72 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/7
+branch size: 12
+Iteration 73 (6s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/5
+branch size: 13
+Iteration 74 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/6
+branch size: 15
+Iteration 75 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/8
+branch size: 16
+Iteration 76 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/9
+branch size: 14
+Iteration 77 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/7
+branch size: 13
+Iteration 78 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/6
+branch size: 10
+Iteration 79 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/3
+branch size: 9
+Iteration 80 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 1/2
+branch size: 10
+Iteration 81 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 3/3
+branch size: 11
+Iteration 82 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/4
+branch size: 14
+Iteration 83 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/7
+branch size: 13
+Iteration 84 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/6
+branch size: 14
+Iteration 85 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 7/7
+branch size: 16
+Iteration 86 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 7/9
+branch size: 14
+Iteration 87 (7s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 5/7
+branch size: 16
+Iteration 88 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/9
+branch size: 13
+Iteration 89 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/6
+branch size: 15
+Iteration 90 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/7
+branch size: 18
+Iteration 91 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/11
+branch size: 15
+Iteration 92 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 2/7
+branch size: 14
+Iteration 93 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 6/7
+branch size: 13
+Iteration 94 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/6
+branch size: 11
+Iteration 95 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/4
+branch size: 13
+Iteration 96 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/6
+branch size: 11
+Iteration 97 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/4
+branch size: 12
+Iteration 98 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/5
+branch size: 14
+Iteration 99 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 0/7
+branch size: 12
+Iteration 100 (8s): covered 9 branches [1 reach funs, 10 reach branches].
+Solved 4/5
+Total Elapsed Time: 8.4297
+  Search Time: 1.25099
+  Solving Time: 0.112211
+  Program Time: 7.0665

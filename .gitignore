@@ -1,0 +1,32 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# instrumented files
+*.cil.c
+*.cil.i
+*.i
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Executable files
+bin/print_execution
+bin/process_cfg
+bin/run_crest
+src/process_cfg/process_cfg
+src/run_crest/run_crest
+src/tools/print_execution
+
+include/crest.h
+
+# CIL
+host/cil/*
+target/cil/*
