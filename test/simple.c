@@ -15,6 +15,9 @@
 int main(void) {
   int a, b;
   CREST_int(a);
+
+  printf("(%d)\n", a) ;
+
   b = 3 * a + 2;
   if (b == 8) {
     printf("8\n");

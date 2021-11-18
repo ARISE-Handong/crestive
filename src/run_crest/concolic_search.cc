@@ -898,22 +898,22 @@ void CfgHeuristicSearch::Run() {
     num_covered_ = 0;
 
     // Execution on empty/random inputs.
-    fprintf(stderr, "RESET\n");
+    //fprintf(stderr, "RESET\n");
     RunProgram(vector<value_t>(), &ex);
     if (UpdateCoverage(ex)) {
       UpdateBranchDistances();
-      PrintStats();
+      //PrintStats();
     }
 
     // while (DoSearch(3, 200, 0, kInfiniteDistance+10, ex)) {
     while (DoSearch(5, 30, 0, kInfiniteDistance, ex)) {
     // while (DoSearch(3, 10000, 0, kInfiniteDistance, ex)) {
-      PrintStats();
+      //PrintStats();
       // As long as we keep finding new branches . . . .
       UpdateBranchDistances();
       ex.Swap(success_ex_);
     }
-    PrintStats();
+    //PrintStats();
   }
 }
 
@@ -970,8 +970,8 @@ bool CfgHeuristicSearch::DoSearch(int depth,
 				  int maxDist,
 				  const SymbolicExecution& prev_ex) {
 
-  fprintf(stderr, "DoSearch(%d, %d, %d, %zu)\n",
-	  depth, pos, maxDist, prev_ex.path().branches().size());
+  //fprintf(stderr, "DoSearch(%d, %d, %d, %zu)\n",
+  //	  depth, pos, maxDist, prev_ex.path().branches().size());
 
   if (pos >= static_cast<int>(prev_ex.path().constraints().size()))
     return false;
@@ -1036,10 +1036,10 @@ bool CfgHeuristicSearch::DoSearch(int depth,
 
 
     if (found_new_branch && prediction_failed) {
-      fprintf(stderr, "Prediction failed.\n");
-      fprintf(stderr, "Found new branch by forcing at "
-	              "distance %zu (%d) [lucky, pred failed].\n",
-	      dist_[bid], scoredBranches[i].second);
+      //fprintf(stderr, "Prediction failed.\n");
+      //fprintf(stderr, "Found new branch by forcing at "
+      //              "distance %zu (%d) [lucky, pred failed].\n",
+      //	      dist_[bid], scoredBranches[i].second);
 
       // We got lucky, and can't really compute any further stats
       // because prediction failed.
@@ -1050,8 +1050,8 @@ bool CfgHeuristicSearch::DoSearch(int depth,
     }
 
     if (found_new_branch && !prediction_failed) {
-      fprintf(stderr, "Found new branch by forcing at distance %zu (%d).\n",
-	      dist_[bid], scoredBranches[i].second);
+      //fprintf(stderr, "Found new branch by forcing at distance %zu (%d).\n",
+      //      dist_[bid], scoredBranches[i].second);
       size_t min_dist = MinCflDistance(b_idx, cur_ex, new_branches);
       // Check if we were lucky.
       if (FindAlongCfg(b_idx, dist_[bid], cur_ex, new_branches)) {
@@ -1074,7 +1074,7 @@ bool CfgHeuristicSearch::DoSearch(int depth,
     }
 
     if (prediction_failed) {
-      fprintf(stderr, "Prediction failed.\n");
+      //fprintf(stderr, "Prediction failed.\n");
       if (!found_new_branch) {
 	num_inner_pred_fails_ ++;
 	continue;
@@ -1086,7 +1086,7 @@ bool CfgHeuristicSearch::DoSearch(int depth,
     if ((dist_[bid] > 0) &&
         SolveAlongCfg(b_idx, scoredBranches[i].second-1, cur_ex)) {
       num_top_solve_successes_ ++;
-      PrintStats();
+      //PrintStats();
       return true;
     }
 
@@ -1122,11 +1122,11 @@ size_t CfgHeuristicSearch::MinCflDistance
   size_t min_dist = numeric_limits<size_t>::max();
   size_t cur_dist = 1;
 
-  fprintf(stderr, "Found uncovered branches at distances:");
+  //fprintf(stderr, "Found uncovered branches at distances:");
   for (BranchIt j = p.begin()+i+1; j != p.end(); ++j) {
     if (bs.find(*j) != bs.end()) {
       min_dist = min(min_dist, cur_dist);
-      fprintf(stderr, " %zu", cur_dist);
+      //fprintf(stderr, " %zu", cur_dist);
     }
 
     if (*j >= 0) {
@@ -1139,12 +1139,12 @@ size_t CfgHeuristicSearch::MinCflDistance
       cur_dist = stack.back();
       stack.pop_back();
     } else {
-      fprintf(stderr, "\nBad branch id: %d\n", *j);
+      //fprintf(stderr, "\nBad branch id: %d\n", *j);
       exit(1);
     }
   }
 
-  fprintf(stderr, "\n");
+  //fprintf(stderr, "\n");
   return min_dist;
 }
 
@@ -1188,7 +1188,7 @@ bool CfgHeuristicSearch::SolveAlongCfg(size_t i, unsigned int max_dist,
 				       const SymbolicExecution& prev_ex) {
   num_solves_ ++;
 
-  fprintf(stderr, "SolveAlongCfg(%zu,%u)\n", i, max_dist);
+  //fprintf(stderr, "SolveAlongCfg(%zu,%u)\n", i, max_dist);
   SymbolicExecution cur_ex;
   vector<value_t> input;
   const vector<branch_id_t>& path = prev_ex.path().branches();
@@ -1336,9 +1336,11 @@ bool CfgHeuristicSearch::DoBoundedBFS(int i, int depth, const SymbolicExecution&
   if (depth <= 0)
     return false;
 
+  /*
   fprintf(stderr, "%d (%d: %d) (%d: %d)\n", depth,
           i-1, prev_ex.path().branches()[prev_ex.path().constraints_idx()[i-1]],
           i, prev_ex.path().branches()[prev_ex.path().constraints_idx()[i]]);
+  */
 
   SymbolicExecution cur_ex;
   vector<value_t> input;
@@ -1356,7 +1358,7 @@ bool CfgHeuristicSearch::DoBoundedBFS(int i, int depth, const SymbolicExecution&
     }
 
     if (!CheckPrediction(prev_ex, cur_ex, prev_ex.path().constraints_idx()[j])) {
-      fprintf(stderr, "Prediction failed!\n");
+      //fprintf(stderr, "Prediction failed!\n");
       continue;
     }
 
