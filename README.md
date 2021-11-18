@@ -21,38 +21,38 @@ Build CREST-IVE with Ubuntu 14.04 and Ubuntu 16.04
 
 1. Clone this repository to your local
 ```	
-$ git clone http://github.com/arise-handong/crestive 
+git clone http://github.com/arise-handong/crestive 
 ```
 
 2. Download [Z3](https://github.com/Z3Prover/z3) version 4.8.4 (or a more recent version) to the 'lib' directory. For example of Ubuntu 16.04:
 ``` 
-$ cd crestive/lib
-crestive/lib$ wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip  
-crestive/lib$ unzip z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip
-crestive/lib$ ln -s z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04 z3
+cd crestive/lib
+wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip
+unzip z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04.zip
+ln -s z3-4.8.4.d6df51951f4c-x64-ubuntu-16.04 z3
 ```
 
 3. Update LD_LIBRARY_PATH of `libz3.so`
 ```
-$ cd crestive/lib/z3/bin
-crestive/lib/z3/bin$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
+cd crestive/lib/z3/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
 ```
 
 4. Build ```cil```, a variant of [CIL](https://cil-project.github.io/cil/) for CREST
 
 ``` 
-$ cd crestive/cil
-crestive/cil$ ./configure
-crestive/cil$ make 
+cd crestive/cil
+./configure
+make 
 ```
 
 5. Build CREST-IVE and update PATH
 
 ``` 
-$ cd crestive/src
-crestive/src$ make
-crestive/src$ cd ../bin
-crestive/bin$ PATH=$PATH:$(pwd) 
+cd crestive/src
+make
+cd ../bin
+PATH=$PATH:$(pwd) 
 ```
 
 Build CREST-IVE with Mac OS
@@ -68,39 +68,39 @@ CREST-IVE can only be built with
 
 1. Clone this repository to your local
 ```	
-$ git clone http://github.com/arise-handong/crestive
+git clone http://github.com/arise-handong/crestive
 ```
 
 2. Download [Z3](https://github.com/Z3Prover/z3) version 4.8.4 (or a more recent version) to the 'lib' directory. For example of Mac OS:
 ``` 
-$ cd crest/lib
-crestive/lib$ wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-osx-10.14.1.zip  
-crestive/lib$ unzip z3-4.8.4.d6df51951f4c-x64-osx-10.14.1.zip
-crestive/lib$ ln -s z3-4.8.4.d6df51951f4c-x64-osx-10.14.1 z3
+cd crest/lib
+wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.4/z3-4.8.4.d6df51951f4c-x64-osx-10.14.1.zip  
+unzip z3-4.8.4.d6df51951f4c-x64-osx-10.14.1.zip
+ln -s z3-4.8.4.d6df51951f4c-x64-osx-10.14.1 z3
 ```
 
 3. Update LD_LIBRARY_PATH of `libz3.dylib`
 ```
-$ cd crestive/lib/z3/bin
-crestive/lib/z3/bin$ install_name_tool -change libz3.dylib /crestive/lib/z3/bin/libz3.dylib process_cfg
-crestive/lib/z3/bin$ install_name_tool -change libz3.dylib /crestive/lib/z3/bin/libz3.dylib run_crest
+cd crestive/lib/z3/bin
+install_name_tool -change libz3.dylib /crestive/lib/z3/bin/libz3.dylib process_cfg
+install_name_tool -change libz3.dylib /crestive/lib/z3/bin/libz3.dylib run_crest
 ```
 
 4. Build ```cil```, a variant of [CIL](https://cil-project.github.io/cil/) for CREST
 
 ``` 
-$ cd crestive/cil
-crestive/cil$ ./configure
-crestive/cil$ make 
+cd crestive/cil
+./configure
+make 
 ```
 
 5. Build CREST-IVE and update PATH
 
 ``` 
-$ cd crestive/src
-crestive/src$ make
-crestive/src$ cd ../bin
-crestive/bin$ PATH=$PATH:$(pwd) 
+cd crestive/src
+make
+cd ../bin
+PATH=$PATH:$(pwd) 
 ```
 Run CRESTIVE
 =====
@@ -117,7 +117,7 @@ Once symbolic variables are declared, a target program must be built by
 execute the following command:
 
 ```
-target$ crestc prog.c
+crestc prog.c
 ```
 
 ```crestc``` is a script to produce an executable of a target program while inserting 
@@ -142,7 +142,7 @@ The command line options of ```bin/run_crest``` are as follows:
 ```<NUM_ITER>``` gives the maximum number of concolic executions, which is the same as
 the maximum number of test inputs to generate.
 ```<STRATEGY>``` defines which search strategy will be used for concolic test generation.
-Currently, CREST-IVE supports six search strategies: ```pdfs``` for DFS, ```rdfs``` for 
+Currently, CREST-IVE supports six search strategies: ```dfs``` for DFS, ```rdfs``` for 
 Reverse DFS, ```random``` for Random Negation, ```uniform_random``` for Uniform Random,
 and ```cfg``` for Control-flow Graph-based heuristics. Depending on ```<STRATEGY>```,
 we may give an argument ```[STRATEGY OPTION]``` optionally. Finally, it is possible to
@@ -153,7 +153,7 @@ For example of ```target/prog.c```, the following command will start CREST-IVE t
 test input with the DFS search strategy up to 1000 times.
 
 ```
-target$ run_crest ./prog 1000 -pdfs
+run_crest ./prog 1000 -dfs
 ```
 
 The test execution results will be printed out to standard output. In addition, *i*-th
